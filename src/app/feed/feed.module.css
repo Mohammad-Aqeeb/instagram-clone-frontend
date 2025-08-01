@@ -1,0 +1,97 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heardIcon{
+    margin-right: 5px;
+    font-size: 25px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.loading,
+.error {
+  text-align: center;
+  color: #888;
+}
+
+.postCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.postUserHeader{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.postUserHeaderImage{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.postUserLikeCommentsContainer{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.postUserLikeContainer{
+  display: flex;
+  gap: 1px;
+  align-items: center;
+}
+
+.heardLikedIcon{
+  color: red;
+}
+
+.postUserLikeCount{
+    font-size: 20px;
+}
+
+.image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.postUserLikeCommentsSaveContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.postCaptionContainer{
+    margin-top: 8px;
+    display: flex;
+    gap: 5px;
+}
+
+.caption {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
