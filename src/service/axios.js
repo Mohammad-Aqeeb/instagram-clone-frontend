@@ -1,0 +1,35 @@
+import axios from 'axios';
+
+// Create an axios instance (optional but recommended)
+const api = axios.create({
+  baseURL: 'http://localhost:3000',
+});
+
+api.interceptors.request.use(
+  function (config) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    console.log('Request:', config);
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+api.interceptors.response.use(
+  function (response) {
+    console.log('Response:', response);
+    return response;
+  },
+  function (error) {
+    if (error.response && error.response.status === 401) {
+      console.log('Unauthorized! Redirecting to login...');
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;
