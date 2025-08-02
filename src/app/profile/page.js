@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Profile.module.css";
 import { CgMenuGridR } from "react-icons/cg";
@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 export default function Profile() {
     const user= useSelector((state)=> state.user.user)
-    console.log(user);
     
     const [activeTab, setActiveTab] = useState('posts');
     const router = useRouter();
@@ -37,8 +36,8 @@ export default function Profile() {
                     <p>{user.fullName}</p>
                     <div className={styles.stats} >
                         <span><strong>{user?.posts?.length}</strong> posts</span>
-                        <span onClick={() => router.push('/profile/follow')}><strong>{user?.follower?.length}</strong> followers</span>
-                        <span onClick={() => router.push('/profile/follow')}><strong>{user?.following?.length}</strong> following</span>
+                        <span onClick={() => router.push('/profile/follow?tab=followers')}><strong>{user?.follower?.length}</strong> followers</span>
+                        <span onClick={() => router.push('/profile/follow?tab=following')}><strong>{user?.following?.length}</strong> following</span>
                     </div>
                 </div>
             </div>
