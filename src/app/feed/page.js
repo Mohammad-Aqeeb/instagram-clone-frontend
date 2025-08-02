@@ -65,7 +65,7 @@ export default function FeedPage() {
                   className={styles.postUserHeaderImage}
                 ></img>
               )}
-              <p className={styles.username}>{post.user.username}</p>
+              <p className={styles.username} onClick={()=> router.push(`/profile/${post.user.username}`)}>{post.user.username}</p>
             </div>
             <img
               src={post.file.url}
