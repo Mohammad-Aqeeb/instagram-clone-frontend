@@ -1,0 +1,39 @@
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.content {
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: baseline;
+}
+
+.username {
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+}
+
+.time {
+  margin-top: 3.5px;
+  font-size: 12px;
+  color: #888;
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
