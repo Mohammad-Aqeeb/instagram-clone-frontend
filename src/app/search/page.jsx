@@ -4,8 +4,11 @@ import { RxCross2 } from "react-icons/rx";
 import React, { useState, useEffect } from 'react';
 import styles from './SearchPage.module.css';
 import api from '@/service/axios';
+import { useRouter } from "next/navigation";
 
 export default function SearchPage() {
+  const router = useRouter();
+
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [search, setSearch] = useState([]);
@@ -58,6 +61,7 @@ export default function SearchPage() {
               <li
                 key={index}
                 className={styles.historyItem}
+                onClick={()=> router.push(`/profile/${user.username}`)}
               >
                 {
                   user.avatar ? 
