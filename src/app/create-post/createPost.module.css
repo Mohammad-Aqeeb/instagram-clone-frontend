@@ -1,0 +1,98 @@
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: 600;
+  color: #262626;
+}
+
+/* Upload */
+.uploadArea {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background-color: #fafafa;
+  border: 2px dashed #dbdbdb;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.uploadArea:hover {
+  background-color: #f0f0f0;
+}
+
+.uploadText {
+  color: #999;
+  font-size: 16px;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Caption */
+.caption {
+  min-height: 80px;
+  border: 1px solid #dbdbdb;
+  padding: 10px;
+  border-radius: 8px;
+  resize: none;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Post Button */
+.postButton {
+  background-color: #0095f6;
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.postButton:hover {
+  background-color: #0077c2;
+}
