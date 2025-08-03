@@ -1,17 +1,24 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ProfilePage.module.css';
 import { useSelector } from 'react-redux';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function FollowPage() {
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');  
+
   const user = useSelector((state)=> state.user.user);
-  const [activeTab, setActiveTab] = useState('followers');
+  const [activeTab, setActiveTab] = useState(tab);
   const follower = user?.follower;
   const following = user?.following;
 
-  console.log(follower);
-  console.log(following);
-  
+  useEffect(() => {
+    router.push(`/profile/follow?tab=${activeTab}`)
+  }, [activeTab]);
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -39,7 +46,7 @@ export default function FollowPage() {
         activeTab === "followers" ? 
           <div className={styles.list}>
             {follower.map((user) => (
-              <div key={user.id} className={styles.userItem}>
+              <div key={user.id} className={styles.userItem} onClick={()=>{ router.push(`/profile/${user.user.username}`)}}>
                 <img src={user.user.avatar.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
                 <div className={styles.userInfo}>
                   <p className={styles.name}>{user.user.name}</p>
@@ -50,7 +57,7 @@ export default function FollowPage() {
           </div> : 
           <div className={styles.list}>
             {following.map((user) => (
-              <div key={user.id} className={styles.userItem}>
+              <div key={user.id} className={styles.userItem} onClick={()=>{ router.push(`/profile/${user.target.username}`)}}>
                 <img src={user.target.avatar?.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
                 <div className={styles.userInfo}>
                   <p className={styles.name}>{user.target.name}</p>
