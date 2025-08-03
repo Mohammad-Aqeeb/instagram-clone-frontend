@@ -34,7 +34,7 @@ const BottomNav = () => {
       <Link href="/search">
         <GrSearch />
       </Link>
-      <Link href="/create">
+      <Link href="/create-post">
         <BsPlusSquare />
       </Link>
       <Link href="/profile">
