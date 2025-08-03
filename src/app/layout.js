@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ReduxProvider>
-          <main className="p-4">{children}</main>
+          <main className='main'>{children}</main>
           <BottomNav/>
         </ReduxProvider>
       </body>
