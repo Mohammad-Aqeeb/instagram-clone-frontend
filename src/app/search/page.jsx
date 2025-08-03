@@ -99,7 +99,7 @@ export default function SearchPage() {
               <li
                 key={index}
                 className={styles.historyItem}
-                onClick={()=> {handleSearchAdd(user.id)}}
+                onClick={()=> router.push(`/profile/${user.username}`)}
               >
                 {
                   user.avatar ? 
