@@ -96,3 +96,46 @@
 .postButton:hover {
   background-color: #0077c2;
 }
+
+
+
+
+
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 16px;
+  min-height: 50px;
+  align-items: center;
+}
+
+.tag {
+  background-color: #efefef;
+  padding: 6px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.removeTagBtn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.tagInput {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  min-width: 100px;
+}
