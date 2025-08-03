@@ -16,8 +16,8 @@
 .profileImage {
   border-radius: 50%;
   object-fit: cover;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
 .info {
@@ -45,6 +45,7 @@
 }
 
 .followButton {
+  width: 30%;
   background-color: #0095f6;
   color: white;
   border: none;
@@ -60,6 +61,7 @@
 }
 
 .followingButton {
+  width: 30%;
   background-color: white;
   color: black;
   border: 1px solid #dbdbdb;
@@ -70,6 +72,7 @@
 }
 
 .messageButton {
+  width: 30%;
   background-color: #efefef;
   border: none;
   padding: 8px 16px;
