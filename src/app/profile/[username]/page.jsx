@@ -1,13 +1,18 @@
+//src/app/profile/[username]/page.js
+
 "use client";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import styles from "./profile.module.css"; // ✅ Using new CSS file
+import styles from "./profile.module.css";
 import { CgMenuGridR } from "react-icons/cg";
 import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
 import api from "@/service/axios";
+import { useSelector } from "react-redux";
 
 export default function OtherUserProfile() {
+  const currentUser = useSelector((state)=>state.user.user)
+
   const { username } = useParams();
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -16,11 +21,14 @@ export default function OtherUserProfile() {
 
   useEffect(() => {
     async function fetchUser() {
+      if (username === currentUser?.username) {
+        router.push("/profile");
+        return;
+      }
       try {
         const res = await api.get(`/user/${username}`);
         setUser(res.data.user);
-        // Set follow status from backend if available
-        setIsFollowing(res.data.isviewerFollowed); // optional field
+        setIsFollowing(res.data.isviewerFollowed);
       } catch (err) {
         console.error("Error fetching user profile", err);
       }
@@ -29,9 +37,14 @@ export default function OtherUserProfile() {
     fetchUser();
   }, [username]);
 
-  const handleFollowClick = () => {
+  const handleFollowClick = async () => {
     setIsFollowing((prev) => !prev);
-    // TODO: Call follow/unfollow API here
+    if(isFollowing === false){
+      await api.post(`/user/follow/${user.id}`)
+    }
+    if(isFollowing === true){
+      await api.post(`/user/unfollow/${user.id}`)
+    }
   };
 
   if (!user) return <div className={styles.loading}>Loading...</div>;
@@ -40,9 +53,7 @@ export default function OtherUserProfile() {
     <div className={styles.container}>
       <div className={styles.profileHeader}>
         <img
-          src={
-            user.avatar?.url || "https://www.w3schools.com/howto/img_avatar.png"
-          }
+          src={ user.avatar?.url || "https://www.w3schools.com/howto/img_avatar.png" }
           alt="Profile"
           className={styles.profileImage}
         />
@@ -53,10 +64,10 @@ export default function OtherUserProfile() {
             <span>
               <strong>{user?.posts?.length}</strong> posts
             </span>
-            <span>
+            <span onClick={()=>{ router.push(`${username}/follow?tab=followers`)}} >
               <strong>{user?.follower?.length}</strong> followers
             </span>
-            <span>
+            <span onClick={()=>{ router.push(`${username}/follow?tab=following`)}}>
               <strong>{user?.following?.length}</strong> following
             </span>
           </div>
