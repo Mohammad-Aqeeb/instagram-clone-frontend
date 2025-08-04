@@ -3,14 +3,14 @@
 import { useState, useRef } from 'react';
 import styles from './createPost.module.css';
 import { useSelector } from 'react-redux';
+import api from '@/service/axios';
 
 export default function CreatePostPage() {
 
-    const [tags, setTags] = useState([]);
-    const [tagInput, setTagInput] = useState('');
-
   const user = useSelector((state)=> state.user.user)
   const [image, setImage] = useState(null);
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState('');
   const [caption, setCaption] = useState('');
   const fileInputRef = useRef(null);
 
@@ -20,17 +20,37 @@ export default function CreatePostPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ image, caption });
-    // TODO: Submit logic here
+    if (!image || !caption) {
+      alert('Please provide an image and caption.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('description', caption);
+    formData.append('tags', JSON.stringify(tags));
+
+    try {
+      const response = await api.post('http://localhost:3000/posts', formData);
+      console.log('Post created:', response);
+
+      setImage(null);
+      setCaption('');
+      setTags([]);
+
+    } catch (err) {
+      console.error('Error:', err);
+    }
+    
   };
 
 
   const handleTagKeyDown = (e) => {
     if ((e.key === 'Enter' || e.key === ',') && tagInput.trim() !== '') {
         e.preventDefault();
-        const newTag = tagInput.trim().replace(/[,]+$/, ''); // Remove trailing comma
+        const newTag = tagInput.trim().replace(/[,]+$/, '');
         if (!tags.includes(newTag)) {
         setTags([...tags, newTag]);
         }
@@ -77,28 +97,28 @@ export default function CreatePostPage() {
         </div>
 
         {/* Tags Input */}
-<div className={styles.tagsWrapper}>
-  {tags.map((tag, index) => (
-    <span key={index} className={styles.tag}>
-      #{tag}
-      <button
-        type="button"
-        onClick={() => removeTag(index)}
-        className={styles.removeTagBtn}
-      >
-        &times;
-      </button>
-    </span>
-  ))}
-  <input
-    type="text"
-    placeholder="Add tags (press Enter)"
-    value={tagInput}
-    onChange={(e) => setTagInput(e.target.value)}
-    onKeyDown={handleTagKeyDown}
-    className={styles.tagInput}
-  />
-</div>
+        <div className={styles.tagsWrapper}>
+          {tags.map((tag, index) => (
+            <span key={index} className={styles.tag}>
+              #{tag}
+              <button
+                type="button"
+                onClick={() => removeTag(index)}
+                className={styles.removeTagBtn}
+              >
+                &times;
+              </button>
+            </span>
+          ))}
+          <input
+            type="text"
+            placeholder="Add tags (press Enter)"
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyDown={handleTagKeyDown}
+            className={styles.tagInput}
+          />
+        </div>
 
         <textarea
           placeholder="Write a caption..."
