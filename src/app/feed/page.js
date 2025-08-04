@@ -108,6 +108,17 @@ export default function FeedPage() {
                 <div>{post.description}</div>
               </div>
             )}
+
+            {post.tags && post.tags.length > 0 && (
+              <div className={styles.tagsContainer}>
+                {post.tags.map((tag, index) => (
+                  <span key={index} className={styles.tag}>
+                    #{tag.name}
+                  </span>
+                ))}
+              </div>
+            )}
+
           </div>
         ))
       )}
