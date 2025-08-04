@@ -81,18 +81,34 @@
 }
 
 .postUserLikeCommentsSaveContainer{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .postCaptionContainer{
-    margin-top: 8px;
-    display: flex;
-    gap: 5px;
+  margin-top: 8px;
+  display: flex;
+  align-items : baseline;
+  gap: 5px;
 }
 
 .caption {
   font-size: 1rem;
   font-weight: bold;
   color: #333;
+}
+
+.tagsContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 14px;
+  color: #555;
 }
