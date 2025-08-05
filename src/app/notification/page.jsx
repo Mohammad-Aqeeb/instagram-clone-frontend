@@ -13,7 +13,6 @@ export default function NotificationsPage() {
         const response = await api.get('/notifications')
         setNotifications(response.data);
       }
-
       getNotification();
     }, [])
 
