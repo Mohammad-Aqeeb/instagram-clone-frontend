@@ -67,10 +67,12 @@ export default function CommentsPage() {
     try {
       const res = await api.post(`/posts/comment/like/${commentId}`);
       
+      console.log(res);
+      
       setComments((prev) =>
         prev.map((comment) =>
           comment.id === commentId
-            ? { ...comment, commentLikes: res.data.likes }
+            ? { ...comment, isViewerLiked: res.data.isViewerLiked, likeCount: res.data.likeCount }
             : comment
         )
       );
@@ -104,7 +106,7 @@ export default function CommentsPage() {
                       <FaRegHeart/>
                     }
                   </button>
-                  {comment?.commentLikes?.length}
+                  {comment.likeCount}
                 </div>
               </div>
 
