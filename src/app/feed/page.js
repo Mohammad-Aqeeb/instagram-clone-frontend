@@ -68,7 +68,7 @@ export default function FeedPage() {
               <p className={styles.username} onClick={()=> router.push(`/profile/${post.user.username}`)}>{post.user.username}</p>
             </div>
             <img
-              src={post.file.url}
+              src={post.file?.url}
               alt={post.caption}
               className={styles.image}
             />
@@ -90,7 +90,7 @@ export default function FeedPage() {
                       }}
                     />
                   )}
-                  <div className={styles.postUserLikeCount}>
+                  <div className={styles.postUserLikeCount} onClick={()=> {router.push(`/post/${post.id}/likes`)}}>
                     {post.like.length}
                   </div>
                 </div>
