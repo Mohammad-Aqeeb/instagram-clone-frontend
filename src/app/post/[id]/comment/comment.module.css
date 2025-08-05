@@ -74,7 +74,26 @@
   margin-top: 6px;
 }
 
-.likeButton,
+.commentLikesContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+
+.likeButton {
+  padding-top: 2px;
+  background: none;
+  justify-self: center;
+  align-self: center;
+  border: none;
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .replyButton {
   background: none;
   border: none;
@@ -169,14 +188,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.likeButton {
-  background: none;
-  border: none;
-  color: #e63946; /* red */
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0;
 }
