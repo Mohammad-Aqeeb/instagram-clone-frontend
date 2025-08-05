@@ -43,10 +43,18 @@ export default function NotificationItem({ data }) {
           <Link href={`/profile/${initiatorUser.username}`} className={styles.username}>
             {initiatorUser.name}
           </Link>{' '}
-          {notificationType === 'likedPhoto' ? 'liked your photo' : 'started following you'}
+          <p>
+            {
+              notificationType === 'likedPhoto'
+                ? 'liked your photo'
+                : notificationType === 'likedComment'
+                  ? 'liked your comment'
+                  : 'started following you'
+            }
+          </p>
           <span className={styles.time}>{shortTime}</span>
       </div>
-      {notificationType === 'likedPhoto' && (
+      {(notificationType === 'likedPhoto' || notificationType === 'likedComment') &&  (
         <img
           src={post.file.url}
           alt="Post thumbnail"
