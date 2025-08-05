@@ -13,9 +13,6 @@ export default function CommentsPage() {
   const [newComment, setNewComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replyInputs, setReplyInputs] = useState({});
-  console.log(comments);
-  
-  console.log(replyInputs);
   
   useEffect(() => {
     async function getComments() {
