@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import styles from './comment.module.css';
 import api from '@/service/axios';
+import { FaRegHeart } from 'react-icons/fa6';
+import { FcLike } from 'react-icons/fc';
 
 export default function CommentsPage() {
   const { id } = useParams();
@@ -11,7 +13,8 @@ export default function CommentsPage() {
   const [newComment, setNewComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [replyInputs, setReplyInputs] = useState({});
-
+  console.log(comments);
+  
   console.log(replyInputs);
   
   useEffect(() => {
@@ -62,11 +65,12 @@ export default function CommentsPage() {
 
   const handleLikeComment = async (commentId) => {
     try {
-      const res = await api.post(`/posts/comments/${commentId}/like`);
+      const res = await api.post(`/posts/comment/like/${commentId}`);
+      
       setComments((prev) =>
         prev.map((comment) =>
           comment.id === commentId
-            ? { ...comment, likes: res.data.likes }
+            ? { ...comment, commentLikes: res.data.likes }
             : comment
         )
       );
@@ -89,12 +93,19 @@ export default function CommentsPage() {
 
               <div className={styles.commentHeader}>
                 <span className={styles.name}>{comment.user.username}</span>
-                <button
+                <div className={styles.commentLikesContainer}>
+                  <button
                   onClick={() => handleLikeComment(comment.id)}
                   className={styles.likeButton}
-                >
-                  ❤️ {comment.likes || 0}
-                </button>
+                  >
+                    {
+                      comment.isViewerLiked ?
+                      <FcLike/>:
+                      <FaRegHeart/>
+                    }
+                  </button>
+                  {comment?.commentLikes?.length}
+                </div>
               </div>
 
               <span className={styles.body}>{comment.text}</span>
@@ -104,7 +115,7 @@ export default function CommentsPage() {
                   onClick={() =>
                     setReplyInputs((prev) => ({
                       ...prev,
-                      [comment.id]: prev[comment.id] ? '' : '',
+                      [comment.id]: '',
                     }))
                   }
                   className={styles.replyButton}
