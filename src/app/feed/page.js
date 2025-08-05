@@ -95,7 +95,7 @@ export default function FeedPage() {
                   </div>
                 </div>
 
-                <FaRegComment className={styles.heardIcon} />
+                <FaRegComment className={styles.commentIcon} onClick={()=> router.push(`/post/${post.id}/comment`)}/>
                 <TbLocationShare className={styles.heardIcon} />
               </div>
               <div>
