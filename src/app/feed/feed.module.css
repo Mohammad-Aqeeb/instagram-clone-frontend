@@ -61,7 +61,6 @@
 
 .postUserLikeContainer{
   display: flex;
-  gap: 1px;
   align-items: center;
 }
 
@@ -70,7 +69,14 @@
 }
 
 .postUserLikeCount{
-    font-size: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.commentIcon{
+  margin-right: 5px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .image {
