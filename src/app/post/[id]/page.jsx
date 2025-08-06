@@ -1,4 +1,5 @@
 "use client";
+import Spinner from "@/components/Spinner";
 import styles from "./post.module.css";
 import api from "@/service/axios";
 import { useParams, useRouter } from "next/navigation";
@@ -26,7 +27,7 @@ export default function postPage() {
   }, []);
 
   if (!post || post.length === 0) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
 
   return (
