@@ -9,6 +9,7 @@ import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
 import api from "@/service/axios";
 import { useSelector } from "react-redux";
+import Spinner from "@/components/Spinner";
 
 export default function OtherUserProfile() {
   const currentUser = useSelector((state)=>state.user.user)
@@ -47,7 +48,7 @@ export default function OtherUserProfile() {
     }
   };
 
-  if (!user) return <div className={styles.loading}>Loading...</div>;
+  if (!user) return <Spinner/>
 
   return (
     <div className={styles.container}>
