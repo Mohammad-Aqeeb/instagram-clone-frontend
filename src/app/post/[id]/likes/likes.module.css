@@ -46,6 +46,7 @@
 .name {
   font-weight: 500;
   color: #222;
+  cursor: pointer;
 }
 
 .followBtn {
