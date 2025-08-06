@@ -4,10 +4,12 @@ import { useState, useRef } from 'react';
 import styles from './createPost.module.css';
 import { useSelector } from 'react-redux';
 import api from '@/service/axios';
+import { useRouter } from 'next/navigation';
 
 export default function CreatePostPage() {
 
-  const user = useSelector((state)=> state.user.user)
+  const user = useSelector((state)=> state.user.user);
+  const router = useRouter();
   const [image, setImage] = useState(null);
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState('');
@@ -39,13 +41,11 @@ export default function CreatePostPage() {
       setImage(null);
       setCaption('');
       setTags([]);
-
+      router.push('/feed')
     } catch (err) {
       console.error('Error:', err);
     }
-    
   };
-
 
   const handleTagKeyDown = (e) => {
     if ((e.key === 'Enter' || e.key === ',') && tagInput.trim() !== '') {
