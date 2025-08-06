@@ -47,7 +47,7 @@ export default function FollowPage() {
           <div className={styles.list}>
             {follower.map((user) => (
               <div key={user.id} className={styles.userItem} onClick={()=>{ router.push(`/profile/${user.user.username}`)}}>
-                <img src={user.user.avatar.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
+                <img src={user?.user?.avatar?.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
                 <div className={styles.userInfo}>
                   <p className={styles.name}>{user.user.name}</p>
                   <p className={styles.username}>@{user.user.username}</p>
@@ -58,7 +58,7 @@ export default function FollowPage() {
           <div className={styles.list}>
             {following.map((user) => (
               <div key={user.id} className={styles.userItem} onClick={()=>{ router.push(`/profile/${user.target.username}`)}}>
-                <img src={user.target.avatar?.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
+                <img src={user.target?.avatar?.url || 'https://www.w3schools.com/howto/img_avatar.png'} alt={user.name} className={styles.avatar} />
                 <div className={styles.userInfo}>
                   <p className={styles.name}>{user.target.name}</p>
                   <p className={styles.username}>@{user.target.username}</p>
