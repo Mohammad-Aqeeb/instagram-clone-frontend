@@ -9,6 +9,7 @@ import { FaRegComment } from "react-icons/fa6";
 import { TbLocationShare } from "react-icons/tb";
 import { RiBookmarkLine } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
+import Spinner from "@/components/Spinner";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function FeedPage() {
     fetchPosts();
   }, []);
 
-  if (loading) return <p className={styles.loading}>Loading posts...</p>;
+  if (loading) return <Spinner/>
   if (error) return <p className={styles.error}>{error}</p>;
 
   return (
