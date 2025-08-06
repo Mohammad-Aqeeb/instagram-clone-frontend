@@ -115,7 +115,7 @@ export default function OtherUserProfile() {
 
       <div className={styles.postsGrid}>
         {user?.posts.map((post, index) => (
-          <div key={index} className={styles.postItem}>
+          <div key={index} className={styles.postItem} onClick={()=> router.push(`/post/${post.id}`)}>
             <img src={post.file.url} alt={`Post ${index}`} />
           </div>
         ))}
