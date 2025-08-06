@@ -66,7 +66,7 @@ export default function SearchPage() {
                 {
                   user.avatar ? 
                   <img
-                    src={user.avatar.url}
+                    src={user?.avatar?.url}
                     alt={user.username}
                     className={styles.profilePic}
                   /> : 
@@ -102,9 +102,9 @@ export default function SearchPage() {
                 onClick={()=> router.push(`/profile/${user.username}`)}
               >
                 {
-                  user.avatar ? 
+                  user.avatar ?
                   <img
-                      src={user.avatar.url}
+                      src={user?.avatar?.url}
                       alt={user.username}
                       className={styles.profilePic}
                   /> : 
