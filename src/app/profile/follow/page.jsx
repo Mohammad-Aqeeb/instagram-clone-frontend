@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './ProfilePage.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Spinner from '@/components/Spinner';
 
 export default function FollowPage() {
 
@@ -19,9 +20,7 @@ export default function FollowPage() {
     router.push(`/profile/follow?tab=${activeTab}`)
   }, [activeTab]);
 
-  if (!user) {
-    return <div>Loading...</div>;
-  }
+  if (!user) return <Spinner/>
 
   return (
     <div className={styles.pageContainer}>
