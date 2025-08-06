@@ -40,7 +40,7 @@ const BottomNav = () => {
       <Link href="/profile">
         {
           user && user.avatar ?
-          <img src={user.avatar.url} className={styles.postUserHeaderImage}></img> :
+          <img src={user?.avatar?.url} className={styles.postUserHeaderImage}></img> :
           <img src='https://www.w3schools.com/howto/img_avatar.png' className={styles.postUserHeaderImage}></img>
         }
       </Link>
