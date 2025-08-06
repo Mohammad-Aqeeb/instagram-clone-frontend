@@ -2,12 +2,13 @@
 import { useEffect, useState } from 'react';
 import styles from './likes.module.css';
 import api from '@/service/axios';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 
 export default function LikesPage() {
   const params = useParams();
+  const router = useRouter();
 
   const currentuser = useSelector((state)=> state.user.user);
   const [likes , setLikes] = useState([]);
@@ -71,7 +72,7 @@ export default function LikesPage() {
                 alt={user.name}
                 className={styles.avatar}
               />
-              <span className={styles.name}>{user.name}</span>
+              <span className={styles.name} onClick={()=> router.push(`/profile/${user.username}`)}>{user.name}</span>
             </div>
 
             {user.id !== currentuser?.id && (
