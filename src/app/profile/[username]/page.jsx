@@ -9,7 +9,7 @@ import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
 import api from "@/service/axios";
 import { useSelector } from "react-redux";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/Spinner/Spinner";
 
 export default function OtherUserProfile() {
   const currentUser = useSelector((state)=>state.user.user)
