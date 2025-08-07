@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './ProfilePage.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Spinner from '@/components/Spinner';
+import Spinner from '@/components/Spinner/Spinner';
 
 export default function FollowPage() {
 
