@@ -1,5 +1,5 @@
 import './globals.css';
-import BottomNav from '@/components/BottomNav';
+import BottomNav from '@/components/BottomNav/BottomNav';
 import ReduxProvider from '@/store/Provider';
 
 export const metadata = {
