@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/Spinner/Spinner";
 import styles from "./post.module.css";
 import api from "@/service/axios";
 import { useParams, useRouter } from "next/navigation";
