@@ -6,6 +6,7 @@ import { CgMenuGridR } from "react-icons/cg";
 import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
 import { useSelector } from "react-redux";
+import Spinner from "@/components/Spinner/Spinner";
 
 export default function Profile() {
     const user= useSelector((state)=> state.user.user)
@@ -14,7 +15,7 @@ export default function Profile() {
     const router = useRouter();
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <Spinner/>
     }
 
     return (
