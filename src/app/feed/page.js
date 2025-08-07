@@ -9,7 +9,7 @@ import { FaRegComment } from "react-icons/fa6";
 import { TbLocationShare } from "react-icons/tb";
 import { RiBookmarkLine } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/Spinner/Spinner";
 
 export default function FeedPage() {
   const router = useRouter();
