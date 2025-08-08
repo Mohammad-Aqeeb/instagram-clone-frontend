@@ -6,6 +6,7 @@ import styles from './comment.module.css';
 import api from '@/service/axios';
 import { FaRegHeart } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function CommentsPage() {
   const router = useRouter();
@@ -112,6 +113,7 @@ export default function CommentsPage() {
   };
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <h2 className={styles.title}>Comments</h2>
 
@@ -246,5 +248,6 @@ export default function CommentsPage() {
         </button>
       </div>
     </div>
+    </PrivateRoute>
   );
 }
