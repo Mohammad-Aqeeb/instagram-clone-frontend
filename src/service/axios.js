@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Create an axios instance (optional but recommended)
 const api = axios.create({
   baseURL: 'http://localhost:3000',
 });
@@ -27,6 +26,7 @@ api.interceptors.response.use(
   function (error) {
     if (error.response && error.response.status === 401) {
       console.log('Unauthorized! Redirecting to login...');
+      localStorage.removeItem('token');
     }
     return Promise.reject(error);
   }
