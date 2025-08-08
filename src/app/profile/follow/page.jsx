@@ -4,6 +4,7 @@ import styles from './ProfilePage.module.css';
 import { useSelector } from 'react-redux';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Spinner from '@/components/Spinner/Spinner';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function FollowPage() {
 
@@ -23,6 +24,7 @@ export default function FollowPage() {
   if (!user) return <Spinner/>
 
   return (
+    <PrivateRoute>
     <div className={styles.pageContainer}>
     <h1 className={styles.title}>Followers & Following</h1>
 
@@ -68,5 +70,6 @@ export default function FollowPage() {
       }
       
     </div>
+    </PrivateRoute>
   );
 }
