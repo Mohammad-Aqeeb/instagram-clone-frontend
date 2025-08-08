@@ -7,6 +7,7 @@ import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
 import { useSelector } from "react-redux";
 import Spinner from "@/components/Spinner/Spinner";
+import PrivateRoute from "@/components/PrivateRoute";
 
 export default function Profile() {
     const user= useSelector((state)=> state.user.user)
@@ -19,6 +20,7 @@ export default function Profile() {
     }
 
     return (
+        <PrivateRoute>
         <div className={styles.container}>
             <div className={styles.profileHeader}>
                 {
@@ -78,5 +80,6 @@ export default function Profile() {
                 ))}
             </div>
         </div>
+        </PrivateRoute>
     );
 }
