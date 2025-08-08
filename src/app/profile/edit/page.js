@@ -5,6 +5,7 @@ import api from '@/service/axios';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '@/slices/userSlice';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function EditProfilePage() {
 
@@ -54,6 +55,7 @@ export default function EditProfilePage() {
   };
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <h1 className={styles.title}>Edit Profile</h1>
 
@@ -176,5 +178,7 @@ export default function EditProfilePage() {
         </button>
       </form>
     </div>
+    </PrivateRoute>
+
   );
 }
