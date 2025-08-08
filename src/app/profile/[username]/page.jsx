@@ -10,6 +10,7 @@ import { LuSquareUser } from "react-icons/lu";
 import api from "@/service/axios";
 import { useSelector } from "react-redux";
 import Spinner from "@/components/Spinner/Spinner";
+import PrivateRoute from "@/components/PrivateRoute";
 
 export default function OtherUserProfile() {
   const currentUser = useSelector((state)=>state.user.user)
@@ -51,6 +52,7 @@ export default function OtherUserProfile() {
   if (!user) return <Spinner/>
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <div className={styles.profileHeader}>
         <img
@@ -122,5 +124,6 @@ export default function OtherUserProfile() {
         ))}
       </div>
     </div>
+    </PrivateRoute>
   );
 }
