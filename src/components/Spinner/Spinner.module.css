@@ -39,7 +39,6 @@
   width: 60%;
 }
 
-/* Shimmer effect */
 .circle::after,
 .textLine::after,
 .textLineShort::after {
