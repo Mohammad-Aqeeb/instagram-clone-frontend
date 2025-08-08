@@ -5,6 +5,7 @@ import styles from './createPost.module.css';
 import { useSelector } from 'react-redux';
 import api from '@/service/axios';
 import { useRouter } from 'next/navigation';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function CreatePostPage() {
 
@@ -61,12 +62,11 @@ export default function CreatePostPage() {
     };
 
     const removeTag = (index) => {
-    setTags(tags.filter((_, i) => i !== index));
+      setTags(tags.filter((_, i) => i !== index));
     };
 
-    console.log({ image, caption, tags });
-
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.card}>
         <div className={styles.header}>
@@ -133,5 +133,6 @@ export default function CreatePostPage() {
         </button>
       </form>
     </div>
+    </PrivateRoute>
   );
 }
