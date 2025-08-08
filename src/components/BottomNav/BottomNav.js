@@ -8,6 +8,7 @@ import { useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '@/slices/userSlice';
 import api from '@/service/axios';
+import PrivateRoute from '../PrivateRoute';
 
 const BottomNav = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const BottomNav = () => {
     }, []);
 
   return (
+    <PrivateRoute>
     <nav className={styles.bottomNav}>
       <Link href="/feed">
         <GrHomeRounded />
@@ -45,6 +47,7 @@ const BottomNav = () => {
         }
       </Link>
     </nav>
+    </PrivateRoute>
   );
 };
 
