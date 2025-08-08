@@ -1,9 +1,10 @@
 'use client'
 
-import NotificationItem from '@/components/NotificationItem';
 import styles from './notification.module.css';
 import { useEffect, useState } from 'react';
 import api from '@/service/axios';
+import NotificationItem from '@/components/NotificationItem/NotificationItem';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function NotificationsPage() {
     const [notifications, setNotifications] = useState([])
@@ -17,11 +18,13 @@ export default function NotificationsPage() {
     }, [])
 
     return (
-    <div className={styles.container}>
-      <h2 className={styles.header}>Notifications</h2>
-      {notifications.map((notif) => (
-        <NotificationItem key={notif.id} data={notif} />
-      ))}
-    </div>
+      <PrivateRoute>
+      <div className={styles.container}>
+        <h2 className={styles.header}>Notifications</h2>
+        {notifications.map((notif) => (
+          <NotificationItem key={notif.id} data={notif} />
+        ))}
+      </div>
+      </PrivateRoute>
   );
 }
