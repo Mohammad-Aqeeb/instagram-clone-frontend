@@ -4,6 +4,7 @@ import styles from './likes.module.css';
 import api from '@/service/axios';
 import { useParams, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
+import PrivateRoute from '@/components/PrivateRoute';
 
 
 export default function LikesPage() {
@@ -61,6 +62,7 @@ export default function LikesPage() {
   }
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <h1 className={styles.title}>Liked by</h1>
       <ul className={styles.list}>
@@ -87,5 +89,6 @@ export default function LikesPage() {
         ))}
       </ul>
     </div>
+    </PrivateRoute>
   );
 }
