@@ -8,8 +8,8 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaRegComment } from "react-icons/fa6";
 import { TbLocationShare } from "react-icons/tb";
 import { RiBookmarkLine } from "react-icons/ri";
-import { FcLike } from "react-icons/fc";
 import Spinner from "@/components/Spinner/Spinner";
+import PrivateRoute from "@/components/PrivateRoute";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -38,9 +38,9 @@ export default function FeedPage() {
   }, []);
 
   if (loading) return <Spinner/>
-  if (error) return <p className={styles.error}>{error}</p>;
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Instagram</h1>
@@ -124,5 +124,6 @@ export default function FeedPage() {
         ))
       )}
     </div>
+    </PrivateRoute>
   );
 }
