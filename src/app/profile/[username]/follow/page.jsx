@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './followPage.module.css';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import api from '@/service/axios';
+import PrivateRoute from '@/components/PrivateRoute';
 
 export default function FollowPage() {
 
@@ -35,8 +36,9 @@ export default function FollowPage() {
   }, []);
 
   return (
+    <PrivateRoute>
     <div className={styles.pageContainer}>
-    <h1 className={styles.title}>Followers & Following</h1>
+      <h1 className={styles.title}>Followers & Following</h1>
 
       <div className={styles.tabs}>
         <button
@@ -79,5 +81,6 @@ export default function FollowPage() {
           </div>
       }
     </div>
+    </PrivateRoute>
   );
 }
