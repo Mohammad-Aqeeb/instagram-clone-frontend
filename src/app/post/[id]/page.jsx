@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { FaRegComment, FaRegHeart } from "react-icons/fa6";
 import { RiBookmarkLine } from "react-icons/ri";
 import { TbLocationShare } from "react-icons/tb";
+import PrivateRoute from "@/components/PrivateRoute";
 
 export default function postPage() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function postPage() {
   }
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <div key={post.id} className={styles.postCard}>
         <div className={styles.postUserHeader}>
@@ -112,5 +114,6 @@ export default function postPage() {
         )}
       </div>
     </div>
+    </PrivateRoute>
   );
 }
