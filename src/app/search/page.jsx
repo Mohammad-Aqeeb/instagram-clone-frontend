@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './SearchPage.module.css';
 import api from '@/service/axios';
 import { useRouter } from "next/navigation";
+import PrivateRoute from "@/components/PrivateRoute";
 
 export default function SearchPage() {
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function SearchPage() {
   }, []);
 
   return (
+    <PrivateRoute>
     <div className={styles.container}>
       <h1 className={styles.title}>Instagram Search</h1>
 
@@ -124,5 +126,6 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+    </PrivateRoute>
   );
 }
