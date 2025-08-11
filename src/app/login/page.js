@@ -21,43 +21,48 @@ export default function LoginPage() {
     setError('');
 
     try {
-        const response = await api.post('/auth/login', { email, password });
-        dispatch(setUser(response.data.user))
-        const token = response.data.accessToken;
-        localStorage.setItem('token', token);    
-        router.push('/feed');
+      const response = await api.post('/auth/login', { email, password });
+      dispatch(setUser(response.data.user));
+      const token = response.data.accessToken;
+      localStorage.setItem('token', token);
+      router.push('/feed');
     } catch (err) {
-        setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Login</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className={styles.input}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className={styles.input}
-        />
-        <button type="submit" disabled={loading} className={styles.button}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-        {error && <p className={styles.error}>{error}</p>}
-      </form>
+    <div className={styles.wrapper}>
+      <div className={styles.card}>
+        <h1 className={styles.logo}>Instagram</h1>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className={styles.input}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className={styles.input}
+          />
+          <button type="submit" disabled={loading} className={styles.button}>
+            {loading ? 'Logging in...' : 'Log In'}
+          </button>
+          {error && <p className={styles.error}>{error}</p>}
+        </form>
+        <p className={styles.text}>
+          Don't have an account? <a href="/register" className={styles.link}>Sign up</a>
+        </p>
+      </div>
     </div>
   );
 }
