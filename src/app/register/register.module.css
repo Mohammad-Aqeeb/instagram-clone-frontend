@@ -1,33 +1,75 @@
-.container {
+/* Center the card in the page */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fafafa;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* Card container */
+.card {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  padding: 40px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
 }
 
-.title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+/* Instagram Logo text (you can replace with image if you want) */
+.logo {
+  font-family: 'Billabong', cursive;
+  font-size: 3rem;
+  margin-bottom: 30px;
 }
 
+/* Form layout */
 .form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
 }
 
+/* Inputs */
 .input {
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #dbdbdb;
+  background-color: #fafafa;
+  border-radius: 3px;
+  font-size: 14px;
 }
 
+/* Button */
 .button {
-  background-color: #4CAF50;
+  background-color: #0095f6;
   color: white;
-  padding: 10px;
+  padding: 8px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #007ec6;
+}
+
+/* Bottom text */
+.text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.link {
+  color: #0095f6;
+  text-decoration: none;
+  font-weight: 500;
 }
