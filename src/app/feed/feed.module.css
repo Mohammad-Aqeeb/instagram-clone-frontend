@@ -1,24 +1,23 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 .header{
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .heardIcon{
-    margin-right: 5px;
-    font-size: 25px;
+  margin-right: 5px;
+  font-size: 25px;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: left;
+  font-family: 'Billabong', cursive;
 }
 
 .error {
