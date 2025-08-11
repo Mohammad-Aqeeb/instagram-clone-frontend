@@ -14,18 +14,17 @@ const BottomNav = () => {
   const dispatch = useDispatch();
   const user= useSelector((state)=> state.user.user);
 
-    useEffect(() => {
-      async function fetchUser() {
-        try {
-          const res = await api.get('user/self');
-          dispatch(setUser(res.data));
-        } catch (err) {
-          console.error("Error fetching user:", err);
-        }
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const res = await api.get('user/self');
+        dispatch(setUser(res.data));
+      } catch (err) {
+        console.error("Error fetching user:", err);
       }
-    
-      fetchUser();
-    }, []);
+    }
+    fetchUser();
+  }, []);
 
   return (
     <PrivateRoute>
