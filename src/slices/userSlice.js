@@ -15,11 +15,12 @@ const userSlice = createSlice({
                 state.user = { ...state.user, ...action.payload }
             }
         },
-        clearUser: (state) => {
-            state.user = null
+        logoutUser: (state) => {
+            state.user = null;
+            localStorage.removeItem("token");
         },
     }
 })
 
-export const {setUser, updateUser, clearUser} = userSlice.actions;
+export const {setUser, updateUser, clearUser, logoutUser} = userSlice.actions;
 export default userSlice.reducer;
