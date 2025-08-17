@@ -1,15 +1,18 @@
 'use client'
+import { FiLogOut } from "react-icons/fi";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Profile.module.css";
 import { CgMenuGridR } from "react-icons/cg";
 import { BiMoviePlay } from "react-icons/bi";
 import { LuSquareUser } from "react-icons/lu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinner from "@/components/Spinner/Spinner";
 import PrivateRoute from "@/components/PrivateRoute";
+import { logoutUser } from "@/slices/userSlice";
 
 export default function Profile() {
+    const dispatch = useDispatch();
     const user= useSelector((state)=> state.user.user)
     
     const [activeTab, setActiveTab] = useState('posts');
@@ -18,6 +21,11 @@ export default function Profile() {
     if (!user) {
         return <Spinner/>
     }
+
+    const handleLogout = () => {
+        dispatch(logoutUser())
+        router.push('/login')
+    };
 
     return (
         <PrivateRoute>
@@ -35,7 +43,10 @@ export default function Profile() {
                     <img src='https://www.w3schools.com/howto/img_avatar.png' className={styles.profileImage}></img>
                 }
                 <div className={styles.info}>
-                    <h2>{user.username}</h2>
+                    <div className={styles.logoutIconContainer}>
+                        <h2>{user.username}</h2>
+                        <FiLogOut className={styles.logoutIcon} onClick={handleLogout} /> 
+                    </div>
                     <p>{user.fullName}</p>
                     <div className={styles.stats} >
                         <span><strong>{user?.posts?.length}</strong> posts</span>
