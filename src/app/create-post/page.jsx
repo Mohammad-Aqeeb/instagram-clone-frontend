@@ -37,8 +37,6 @@ export default function CreatePostPage() {
 
     try {
       const response = await api.post('http://localhost:3000/posts', formData);
-      console.log('Post created:', response);
-
       setImage(null);
       setCaption('');
       setTags([]);
