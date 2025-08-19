@@ -14,8 +14,8 @@ export default function LayoutWrapper({ children }) {
   
   useEffect(()=>{
     const token = localStorage.getItem('token');
-    if(token){
-      router.replace('/feed');
+    if(!token){
+      router.replace('/login');
     }
     setLoading(false)
   },[])
