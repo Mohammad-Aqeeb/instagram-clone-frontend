@@ -103,19 +103,11 @@ export default function SearchPage() {
                 className={styles.historyItem}
                 onClick={()=> router.push(`/profile/${user.username}`)}
               >
-                {
-                  user.avatar ?
-                  <img
-                      src={user?.avatar?.url}
-                      alt={user.username}
-                      className={styles.profilePic}
-                  /> : 
-                  <img
-                      src='https://www.w3schools.com/howto/img_avatar.png'
-                      alt={user.username}
-                      className={styles.profilePic}
-                  />
-                }
+                <img
+                  src={user?.avatar?.url || 'https://www.w3schools.com/howto/img_avatar.png'}
+                  alt={user.username}
+                  className={styles.profilePic}
+                />
                 
                 <div className={styles.userInfo}>
                   <span className={styles.fullName}>{user.name}</span>
